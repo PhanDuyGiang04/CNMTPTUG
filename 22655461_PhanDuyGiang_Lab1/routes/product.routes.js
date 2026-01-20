@@ -1,20 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db/mysql');
-// Home
-router.get('/', async (req, res) => {
-    const [rows] = await db.query('SELECT * FROM products');
-    res.render('products', { products: rows });
-});
+const productController = require('../controllers/product.controller');
 
-// Add product
-router.post('/add', async (req, res) => {
-    const { name, price, quantity } = req.body;
-    await db.query(
-        'INSERT INTO products(name, price, quantity) VALUES (?, ?, ?)',
-        [name, price, quantity]
-    );
-    res.redirect('/');
-});
+router.get('/', productController.index);
+
+router.post('/add', productController.add);
+
+router.get('/edit/:id', productController.editForm);
+router.post('/edit/:id', productController.update);
+
+router.get('/delete/:id', productController.delete);
 
 module.exports = router;

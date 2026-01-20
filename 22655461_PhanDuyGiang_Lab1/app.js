@@ -1,4 +1,6 @@
 const express = require('express');
+const session = require('express-session');
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -6,7 +8,16 @@ app.set('views', './views');
 
 app.use(express.urlencoded({ extended: true }));
 
+app.use(session({
+  secret: 'shopdb',
+  resave: false,
+  saveUninitialized: true
+}));
+
 const productRoutes = require('./routes/product.routes');
+const authRoutes = require('./routes/auth.routes');
+
+app.use('/', authRoutes);
 app.use('/', productRoutes);
 
 app.listen(3000, () => {

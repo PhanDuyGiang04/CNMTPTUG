@@ -1,0 +1,8 @@
+<h2>Edit Product</h2>
+
+<form action="/edit/<%= product.id %>" method="post">
+  Name: <input name="name" value="<%= product.name %>"><br>
+  Price: <input name="price" value="<%= product.price %>"><br>
+  Quantity: <input name="quantity" value="<%= product.quantity %>"><br>
+  <button>Update</button>
+</form>

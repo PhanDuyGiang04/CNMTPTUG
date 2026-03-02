@@ -1,0 +1,16 @@
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+}
+
+input, button {
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.msg {
+  margin-top: 20px;
+  color: green;
+  font-weight: bold;
+}

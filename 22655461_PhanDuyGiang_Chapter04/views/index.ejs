@@ -1,0 +1,10 @@
+<%- include("layout", { body: `
+<h1>Ứng dụng MVC Node.js + EJS</h1>
+
+<form method="POST" action="/submit">
+<input name="name" placeholder="Nhập tên của bạn" required />
+<button type="submit">Gửi</button>
+</form>
+
+${message ? `<p class="msg">${message}</p>` : ""}
+`}) %>
